@@ -8,7 +8,7 @@ class ValidationError extends Error{
         });
 
         super()
-        this.name = "Validation Error",
+        this.name = "ValidationError",
         this.message = "not able to validate data sent in the request"
         this.explanation = explanation,
         this.statuscode = StatusCodes.BAD_REQUEST

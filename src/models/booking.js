@@ -25,7 +25,7 @@ module.exports = (sequelize, DataTypes) => {
     status: {
       type: DataTypes.ENUM,
       allowNull: false,
-      defaultValue: InProcess,
+      defaultValue: 'InProcess',
       values: ['InProcess','Booked','Cancelled']
     }
   }, {
