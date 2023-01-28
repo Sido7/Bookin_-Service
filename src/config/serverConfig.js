@@ -3,5 +3,6 @@ dotenv.config()
 
 module.exports = {
     Port: process.env.PORT,
-    DB_SYNC: process.env.DB_SYNC
+    DB_SYNC: process.env.DB_SYNC,
+    HOST: process.env.HOST
 }

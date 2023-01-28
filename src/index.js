@@ -3,7 +3,7 @@ const bodyparser = require('body-parser')
 
 const apiRoutes = require('./routes/index')
 const {Port} = require('./config/serverConfig')
-const {DB_SYNC} = require('./config/serverConfig')
+const { DB_SYNC } = require('./config/serverConfig')
 const db = require('./models/index')
 const createServer = async () =>{
     const app = express()
@@ -11,6 +11,7 @@ const createServer = async () =>{
     app.use(bodyparser.json())
     app.use(bodyparser.urlencoded({extended:true}))
     app.use('/api',apiRoutes)
+    
     // if(DB_SYNC){
     //     db.sequelize.sync({alert:true})
 
