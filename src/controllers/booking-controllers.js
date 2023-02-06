@@ -1,9 +1,20 @@
 const {StatusCodes} = require('http-status-codes')
 const {BookingService} = require('../service/index')
+const {createChannel,publishMessages} = require('../utils/messageQueue')
+const {Binding_Key} = require('../config/serverConfig')
 
 const bookingService = new BookingService()
 
-const createBooking = async (req,res)=>{
+class BookingController{
+
+    async publish(req,res) {
+        const channel = await createChannel()
+        const data = {message:"Success"}
+        await  publishMessages(channel,Binding_Key,JSON.stringify(data))
+        return res.status(200).json({success:true})
+    }
+
+    async createBooking(req,res){
     try{
         console.log("controller hit",req.body)
         const booking = await bookingService.createBooking(req.body)
@@ -20,9 +31,7 @@ const createBooking = async (req,res)=>{
             message: "kk"
         })
     }
-
+}
 }
 
-module.exports = {
-    createBooking
-}
+module.exports = BookingController
