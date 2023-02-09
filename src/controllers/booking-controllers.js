@@ -9,8 +9,14 @@ class BookingController{
 
     async publish(req,res) {
         const channel = await createChannel()
-        const data = {message:"Success"}
-        await  publishMessages(channel,Binding_Key,JSON.stringify(data))
+        const payload = {
+            data:{
+                subject: "This is just to check queue",
+                content: "Rabbit MQ message Queue is working or not",
+                recepientEmail: "siddharth1850@gmail.com",
+                notificationTime: "2023-02-07 19:12:00"
+            },service:"Create_Ticket"}
+        await  publishMessages(channel,Binding_Key,JSON.stringify(payload))
         return res.status(200).json({success:true})
     }
 
